@@ -1,7 +1,7 @@
 package exercicios.testes;
 
 import exercicios.EmailService;
-import exercicios.Marketing;
+import exercicios.MarketingCampaign;
 import exercicios.MessagingService;
 import exercicios.SmsService;
 import exercicios.SocialMediaService;
@@ -20,7 +20,7 @@ public class TesteMessagingService {
 
         List<MessagingService> services = List.of(sms, email, socialMedia, whatsApp);
 
-        Marketing campaign = new Marketing(services);
+        MarketingCampaign campaign = new MarketingCampaign(services);
 
         String mensagemPromo = "Aproveite! 50% de desconto em todo o site apenas hoje!";
         campaign.dispatch(mensagemPromo);

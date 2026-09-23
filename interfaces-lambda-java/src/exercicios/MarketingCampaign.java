@@ -2,12 +2,12 @@ package exercicios;
 
 import java.util.List;
 
-public class Marketing {
+public class MarketingCampaign {
 
     private final List<MessagingService> services;
 
 
-    public Marketing(List<MessagingService> services) {
+    public MarketingCampaign(List<MessagingService> services) {
         this.services = services;
     }
 
