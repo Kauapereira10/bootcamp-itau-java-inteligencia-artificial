@@ -6,12 +6,10 @@ public sealed abstract class Clock permits BRLClock, USClock{
     protected int minute;
     protected int second;
 
-    Clock convert(Clock clock) {
-        return clock;
-    }
+    public abstract Clock convert(Clock clock);
 
     public String getTime() {
-        return hour+":"+minute+":"+second;
+        return String.format("%02d:%02d:%02d", hour, minute, second);
     }
 
     public int getHour() {
@@ -19,9 +17,8 @@ public sealed abstract class Clock permits BRLClock, USClock{
     }
 
     public void setHour(int hour) {
-        if (hour >= 24) {
-            this.hour = 24;
-            return;
+        if (hour < 0 || hour > 23) {
+            throw new IllegalArgumentException("A hora deve estar entre 0 e 23.");
         }
         this.hour = hour;
     }
@@ -31,9 +28,8 @@ public sealed abstract class Clock permits BRLClock, USClock{
     }
 
     public void setMinute(int minute) {
-        if (minute >= 60) {
-            this.minute = 60;
-            return;
+        if (minute < 0 || minute > 59) {
+            throw new IllegalArgumentException("Os minutos devem estar entre 0 e 59.");
         }
         this.minute = minute;
     }
@@ -43,8 +39,8 @@ public sealed abstract class Clock permits BRLClock, USClock{
     }
 
     public void setSecond(int second) {
-        if (second >= 60) {
-            this.second = 60;
+        if (second < 0 || second > 59) {
+            throw new IllegalArgumentException("Os segundos devem estar entre 0 e 59.");
         }
         this.second = second;
     }
